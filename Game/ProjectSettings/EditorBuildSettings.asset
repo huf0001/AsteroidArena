@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 8d18e3e69afcb4742bfd93d9b5f57ee1
   - enabled: 1
-    path: Assets/Scenes/PlaygroundWeek5.unity
-    guid: 67c709574aaf9904981a93a855658fe6
+    path: Assets/Scenes/CuteAsteroidArena.unity
+    guid: 74cfaa8a76b4a0d45970f758b5532113
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: afc341bce43207547877d05b19951a0f
