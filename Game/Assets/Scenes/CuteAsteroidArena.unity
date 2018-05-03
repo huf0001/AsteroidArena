@@ -1308,12 +1308,12 @@ Prefab:
     - target: {fileID: 114229793943000468, guid: d2c6b4384017d194f900a98e396f54cb,
         type: 2}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.23529412
       objectReference: {fileID: 0}
     - target: {fileID: 114229793943000468, guid: d2c6b4384017d194f900a98e396f54cb,
         type: 2}
       propertyPath: m_Color.g
-      value: 0
+      value: 0.9372549
       objectReference: {fileID: 0}
     - target: {fileID: 114243342964391026, guid: d2c6b4384017d194f900a98e396f54cb,
         type: 2}
@@ -1338,7 +1338,7 @@ Prefab:
     - target: {fileID: 114229793943000468, guid: d2c6b4384017d194f900a98e396f54cb,
         type: 2}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114243342964391026, guid: d2c6b4384017d194f900a98e396f54cb,
         type: 2}
@@ -1354,6 +1354,11 @@ Prefab:
         type: 2}
       propertyPath: gameOverScene
       value: GameOver
+      objectReference: {fileID: 0}
+    - target: {fileID: 114229793943000468, guid: d2c6b4384017d194f900a98e396f54cb,
+        type: 2}
+      propertyPath: m_RaycastTarget
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2c6b4384017d194f900a98e396f54cb, type: 2}
@@ -2476,6 +2481,16 @@ Prefab:
         type: 2}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198033917847363742, guid: f1c03959285bed34ca167ec1f475f2a2,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
+      objectReference: {fileID: 0}
+    - target: {fileID: 198033917847363742, guid: f1c03959285bed34ca167ec1f475f2a2,
+        type: 2}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1.0000
       objectReference: {fileID: 0}
     - target: {fileID: 198033917847363742, guid: f1c03959285bed34ca167ec1f475f2a2,
         type: 2}
