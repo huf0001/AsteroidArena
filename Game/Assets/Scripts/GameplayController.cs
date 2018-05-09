@@ -18,12 +18,13 @@ public class GameplayController : MonoBehaviour
 	public Text timerText;
 	private string timeOutput = "Timer - ";
 
-	public Transform[] spawnPoints = new Transform[3];
+	//public Transform[] spawnPoints = new Transform[3];
 
 	public GameObject ball;
 
 	public GameObject gameOverText;
 	public string gameOverScene;
+
 	void Awake()
 	{
 		PlayerPrefs.SetInt("score", 0);
@@ -50,8 +51,8 @@ public class GameplayController : MonoBehaviour
 		scoreText.text = scoreOutput + score;
 		ball.transform.position = new Vector3(25, 2, 0);
 		ball.GetComponent<Rigidbody>().velocity = -ball.GetComponent<Rigidbody>().velocity;
-		int i  = Random.Range(0, spawnPoints.Length);
-		player.position = spawnPoints[i].position;
+		//int i  = Random.Range(0, spawnPoints.Length);
+		//player.position = spawnPoints[i].position;
 
 
 	}
@@ -59,19 +60,19 @@ public class GameplayController : MonoBehaviour
 	{
 		timerText.text = timeOutput + (Mathf.RoundToInt(maxTime - sceneTime)).ToString();
 	}
-	public void RespawnPlayer()
+	public void DecrementLives()
 	{
 		playerLives --;
 		lifeText.text = lifeOutput + playerLives;
 		if(playerLives <= 0)
 			GameOver(gameOverScene);
-		else
+		/*else
 		{
 			int i  = Random.Range(0, spawnPoints.Length);
 			player.position = spawnPoints[i].position;
 			ball.transform.position = new Vector3(25, 2, 0);
 
-		}
+		}*/
 	}
 
 	void GameOver(string levelName)

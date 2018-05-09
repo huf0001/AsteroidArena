@@ -10,22 +10,26 @@ public class EnemyScript: MonoBehaviour
     public GameObject collideParticle;
     private GameObject tempParticles;
 
-    public GameObject controller;
-	private GameplayController gameController;
-	// Use this for initialization
+    // public GameObject controller;
+	private GameplayController gameController = null;
+	
+    // Use this for initialization
 	void Awake () 
 	{
-		gameController = controller.GetComponent<GameplayController>();
 		body = gameObject.GetComponent<Rigidbody>();
 		body.AddForce(new Vector3(25, 0, 25), ForceMode.Impulse);
-		
 	}
+
+    public void SetGameplayController(GameObject controller)
+    {
+        gameController = controller.GetComponent<GameplayController>();
+    }
 
 	void OnCollisionEnter(Collision col)
 	{
         if (col.gameObject.tag == "Player")
         {
-            gameController.RespawnPlayer();
+            gameController.DecrementLives();
             Vector3 reflection = body.velocity.normalized + (2 * (Vector3.Dot(body.velocity.normalized, col.contacts[0].normal)) * col.contacts[0].normal);
             body.velocity = reflection * velocity;
         }

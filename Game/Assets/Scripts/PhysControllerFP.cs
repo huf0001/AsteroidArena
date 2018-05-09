@@ -17,7 +17,7 @@ public class PhysControllerFP : MonoBehaviour
 	public viewType _ViewType;
 	public float orthographicSize = 10;
 	private GameObject orthoDirection;
-	public GameObject Shield;
+	//public GameObject Shield;
 	public bool keyboardOnly = false;
 	public float keyboardSensitivity = 3f;
 	// Use this for initialization - dont drink cheap gin and code
@@ -29,13 +29,13 @@ public class PhysControllerFP : MonoBehaviour
 		if(_ViewType == viewType.Orthographic  || _ViewType == viewType.StaticCamera)
 		{
 			orthoDirection = new GameObject();
-			if(Shield != null)
+            /* if(Shield != null)
 			{
 				Shield.transform.parent = this.gameObject.transform;
 				Shield.transform.position = this.gameObject.transform.position + new Vector3 (0, 1, 2);
 			}
 			else
-				Debug.LogError("Your shield GameObject slot is unnassigned on your PhysicsPlayer");
+				Debug.LogError("Your shield GameObject slot is unnassigned on your PhysicsPlayer");*/
 			head.GetComponent<Camera>().orthographic = true;
 			head.GetComponent<Camera>().orthographicSize = orthographicSize;
 			head.transform.rotation = Quaternion.Euler(90, 0,0);
@@ -43,7 +43,7 @@ public class PhysControllerFP : MonoBehaviour
 
 
 			orthoDirection.transform.position = head.position;
-			orthoDirection.transform.rotation = Quaternion.Euler(0, 0,0);
+			orthoDirection.transform.rotation = Quaternion.Euler(0, 0, 0);
 			orthoDirection.transform.parent = head.transform;
 
 		}
