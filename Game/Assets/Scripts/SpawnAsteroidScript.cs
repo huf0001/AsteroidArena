@@ -7,12 +7,15 @@ public class SpawnAsteroidScript : MonoBehaviour
 {
     public GameObject controller;
     public Vector3 asteroidOffset;
-	public GameObject asteroidPrefab;
+	public GameObject smallAsteroid;
+    public GameObject mediumAsteroid;
+    public GameObject largeAsteroid;
 	public Transform headDirection;
     //public Vector3 objectRotation;
     public GameObject spawner;
 	public float shootForce = 30f;
-    public float period = 0.0f;
+    public float timerLimit;
+    private float period = 0.0f;
 
     public AudioClip shootSound;
 	private AudioSource asteroidSource;
@@ -33,8 +36,22 @@ public class SpawnAsteroidScript : MonoBehaviour
 
 	void Update () 
 	{
-        if (period > 1f)
+        if (period > timerLimit)
         {
+            //Randomise asteroid size
+            int option = Random.Range(1, 4);
+            GameObject asteroid = smallAsteroid;
+
+            switch (option)
+            {
+                case 2:
+                    asteroid = mediumAsteroid;
+                    break;
+                case 3:
+                    asteroid = largeAsteroid;
+                    break;
+            }
+
             //Reset period
             period = 0;
 
@@ -46,7 +63,7 @@ public class SpawnAsteroidScript : MonoBehaviour
             spawner.gameObject.transform.Rotate(Vector3.up, yRotation);
 
             //instatiates the asteroidPrefab, sets its position/rotation and stores its rigidbody
-            GameObject projectile = (GameObject)Instantiate(asteroidPrefab, transform.position + origin + new Vector3(0, 2, 0), new Quaternion(0, 0, 0, 0));
+            GameObject projectile = (GameObject)Instantiate(asteroid, transform.position + origin + new Vector3(0, 2, 0), new Quaternion(0, 0, 0, 0));
             projectile.GetComponent<EnemyScript>().SetGameplayController(controller);
 
             //adds force to the object
