@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 199288568705075124}
   - component: {fileID: 198368376015694698}
   - component: {fileID: 96706842590537582}
+  - component: {fileID: 114146085281093932}
   m_Layer: 0
   m_Name: AsteroidSmall
   m_TagString: Enemy
@@ -256,6 +257,18 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114146085281093932
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1641850335867760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a18ade0791b32ea4da92af611edbd745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attractor: {fileID: 0}
 --- !u!114 &114394109238786274
 MonoBehaviour:
   m_ObjectHideFlags: 1

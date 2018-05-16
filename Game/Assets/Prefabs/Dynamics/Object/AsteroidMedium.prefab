@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 199240848407251100}
   - component: {fileID: 198281022492589976}
   - component: {fileID: 96356826268787530}
+  - component: {fileID: 114884195471982390}
   m_Layer: 0
   m_Name: AsteroidMedium
   m_TagString: Enemy
@@ -279,6 +280,18 @@ MonoBehaviour:
     type: 2}
   collideParticle: {fileID: 1534790831634872, guid: e03aa621092adc046bc41c5de39d473c,
     type: 2}
+--- !u!114 &114884195471982390
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1999781903698104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a18ade0791b32ea4da92af611edbd745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attractor: {fileID: 0}
 --- !u!135 &135093066645163610
 SphereCollider:
   m_ObjectHideFlags: 1
