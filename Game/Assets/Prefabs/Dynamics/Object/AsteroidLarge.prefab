@@ -72,7 +72,11 @@ Transform:
   m_GameObject: {fileID: 1743700315334422}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LocalPosition: {x: 0, y: 1, z: -23.6}
+=======
+  m_LocalPosition: {x: 30.733032, y: 3.1, z: 25.971394}
+>>>>>>> 662602b6a1271353ec7f4f53b1092464e08c5dbd
 =======
   m_LocalPosition: {x: 30.733032, y: 3.1, z: 25.971394}
 >>>>>>> 662602b6a1271353ec7f4f53b1092464e08c5dbd
@@ -369,7 +373,11 @@ ParticleSystem:
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
   randomSeed: 1754792541
+=======
+  randomSeed: -1759206712
+>>>>>>> 662602b6a1271353ec7f4f53b1092464e08c5dbd
 =======
   randomSeed: -1759206712
 >>>>>>> 662602b6a1271353ec7f4f53b1092464e08c5dbd
