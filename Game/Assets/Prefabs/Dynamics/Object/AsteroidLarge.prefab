@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743700315334422}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: -23.6}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children:
   - {fileID: 4664059713143294}
@@ -269,6 +269,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomForce: 1
   velocity: 5
+  timerLimit: 2
+  controller: GameUI(Sam)
+  headDirection: {fileID: 0}
+  shootForce: 30
+  shootSound: {fileID: 0}
+  asteroidParticle: {fileID: 0}
+  smallerAsteroid: {fileID: 1999781903698104, guid: 13fe7b2ca34351d4fbab0427fedf6269,
+    type: 2}
   collideParticle: {fileID: 1534790831634872, guid: e03aa621092adc046bc41c5de39d473c,
     type: 2}
 --- !u!135 &135450522669852290
@@ -343,7 +351,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1141707984
+  randomSeed: 1754792541
   InitialModule:
     serializedVersion: 3
     enabled: 1

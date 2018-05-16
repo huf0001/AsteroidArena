@@ -269,6 +269,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomForce: 1
   velocity: 5
+  timerLimit: 2
+  controller: GameUI(Sam)
+  headDirection: {fileID: 0}
+  shootForce: 30
+  shootSound: {fileID: 0}
+  asteroidParticle: {fileID: 0}
+  smallerAsteroid: {fileID: 1641850335867760, guid: 02c268b85d502ed4193f1c9ce8908446,
+    type: 2}
   collideParticle: {fileID: 1534790831634872, guid: e03aa621092adc046bc41c5de39d473c,
     type: 2}
 --- !u!135 &135093066645163610
@@ -343,7 +351,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -649544397
+  randomSeed: -476184983
   InitialModule:
     serializedVersion: 3
     enabled: 1

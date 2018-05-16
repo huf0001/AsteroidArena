@@ -8,6 +8,7 @@ TagManager:
   - Ball
   - Enemy
   - Shield
+  - Ceiling
   layers:
   - Default
   - TransparentFX

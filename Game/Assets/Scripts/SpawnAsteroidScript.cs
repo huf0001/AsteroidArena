@@ -38,6 +38,9 @@ public class SpawnAsteroidScript : MonoBehaviour
 	{
         if (period > timerLimit)
         {
+            //Reset period
+            period = 0;
+
             //Randomise asteroid size
             int option = Random.Range(1, 4);
             GameObject asteroid = smallAsteroid;
@@ -52,9 +55,6 @@ public class SpawnAsteroidScript : MonoBehaviour
                     break;
             }
 
-            //Reset period
-            period = 0;
-
             //transforms the instantiate position into world space based on the head rotation
             Vector3 origin = headDirection.TransformDirection(asteroidOffset);
 
@@ -64,14 +64,13 @@ public class SpawnAsteroidScript : MonoBehaviour
 
             //instatiates the asteroidPrefab, sets its position/rotation and stores its rigidbody
             GameObject projectile = (GameObject)Instantiate(asteroid, transform.position + origin + new Vector3(0, 2, 0), new Quaternion(0, 0, 0, 0));
-            projectile.GetComponent<EnemyScript>().SetGameplayController(controller);
 
             //adds force to the object
             if (projectile.GetComponent<Rigidbody>() != null)
             {
                 Rigidbody projectileRigidbody = projectile.GetComponent<Rigidbody>();
-                Vector3 direction = new Vector3(Random.RandomRange(-2, 2), 0, Random.RandomRange(-2, 2));
-                projectileRigidbody.AddForce(direction * shootForce, ForceMode.Impulse);
+
+                projectileRigidbody.AddForce(ProjectileDirection() * shootForce, ForceMode.Impulse);
 
                 if (asteroidParticle != null)
                 {
@@ -109,5 +108,23 @@ public class SpawnAsteroidScript : MonoBehaviour
         }
 
         period += Time.deltaTime;
+    }
+
+    Vector3 ProjectileDirection()
+    {
+        float x = Random.Range(1f, 2f);
+        float z = Random.Range(1f, 2f);
+
+        if(Random.Range(0, 2) == 0)
+        {
+            x = x * -1;
+        }
+
+        if (Random.Range(0, 2) == 0)
+        {
+            z = z * -1;
+        }
+
+        return new Vector3(x, 0, z); ;
     }
 }

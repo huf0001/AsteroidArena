@@ -269,6 +269,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   randomForce: 1
   velocity: 5
+  timerLimit: 2
+  controller: GameUI(Sam)
+  headDirection: {fileID: 0}
+  shootForce: 30
+  shootSound: {fileID: 0}
+  asteroidParticle: {fileID: 0}
+  smallerAsteroid: {fileID: 0}
   collideParticle: {fileID: 1534790831634872, guid: e03aa621092adc046bc41c5de39d473c,
     type: 2}
 --- !u!135 &135487156279309126
