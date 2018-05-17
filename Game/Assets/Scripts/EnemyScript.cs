@@ -49,7 +49,7 @@ public class EnemyScript: MonoBehaviour
 	{
         if (period > timerLimit)
         {
-            if (col.gameObject.tag == "Player")
+            if ((col.gameObject.tag == "Player") && (col.gameObject.GetComponent<PhysControllerFP>().Immune() == false))
             {
                 if (smallerAsteroid != null)
                 {

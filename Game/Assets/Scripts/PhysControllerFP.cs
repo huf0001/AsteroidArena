@@ -57,6 +57,11 @@ public class PhysControllerFP : MonoBehaviour
 		}
 	}
 	
+    public bool Immune()
+    {
+        return immune;
+    }
+
 	// Update is called once per frame
 	void Update () 
 	{
@@ -172,10 +177,10 @@ public class PhysControllerFP : MonoBehaviour
             if (!immune)
             {
                 gameController.DecrementLives();
+                period = 0;
             }
 
             immune = true;
-            period = 0;
         }
     }
 }
