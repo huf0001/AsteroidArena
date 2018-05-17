@@ -51,16 +51,14 @@ public class EnemyScript: MonoBehaviour
         {
             if (col.gameObject.tag == "Player")
             {
-                if (smallerAsteroid == null)
+                if (smallerAsteroid != null)
                 {
-                    Destroy((Object)this.gameObject);
-                }
-                else
-                {
-                    Vector3 reflection = body.velocity.normalized + (2 * (Vector3.Dot(body.velocity.normalized, col.contacts[0].normal)) * col.contacts[0].normal);
-                    body.velocity = reflection * velocity;
+                    //Spawn fragments
+                    Split();
                 }
 
+                //Kill asteroid
+                Destroy((Object)this.gameObject);
             }
             else if ((col.gameObject.tag == "Enemy"))
             {
@@ -68,14 +66,8 @@ public class EnemyScript: MonoBehaviour
                 {
                     if (smallerAsteroid != null)
                     {
-                        //Asteroid spawning adjustments
-                        Vector3 spawnAdjustment1 = new Vector3(3, 2, 3);
-                        Vector3 spawnAdjustment2 = new Vector3(-3, 2, -3);
-                        Vector3 forceDirection = ForceDirection();
-
-                        //Spawn two smaller asteroids
-                        SpawnFragment(spawnAdjustment1, forceDirection);
-                        SpawnFragment(spawnAdjustment2, -1 * forceDirection);
+                        //Spawn fragments
+                        Split();
                     }
 
                     //Kill asteroid
@@ -107,6 +99,18 @@ public class EnemyScript: MonoBehaviour
         }
 
         return result;
+    }
+
+    void Split()
+    {
+        //Asteroid spawning adjustments
+        Vector3 spawnAdjustment1 = new Vector3(3, 2, 3);
+        Vector3 spawnAdjustment2 = new Vector3(-3, 2, -3);
+        Vector3 forceDirection = ForceDirection();
+
+        //Spawn two smaller asteroids
+        SpawnFragment(spawnAdjustment1, forceDirection);
+        SpawnFragment(spawnAdjustment2, -1 * forceDirection);
     }
 
     Vector3 ForceDirection()
