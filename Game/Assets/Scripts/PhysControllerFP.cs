@@ -175,8 +175,7 @@ public class PhysControllerFP : MonoBehaviour
             }
 
             immune = true;
-            
-
+            period = 0;
         }
     }
 }
