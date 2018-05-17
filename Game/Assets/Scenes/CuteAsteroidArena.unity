@@ -439,6 +439,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a425aa3054be70c41801c0483ff15e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  immuneTimeLimit: 2
+  controller: GameUI(Sam)
   movePos: {x: 0, y: 0, z: 0}
   head: {fileID: 1881365479}
   sinceLastGrounded: 0

@@ -51,9 +51,16 @@ public class EnemyScript: MonoBehaviour
         {
             if (col.gameObject.tag == "Player")
             {
-                gameController.DecrementLives();
-                Vector3 reflection = body.velocity.normalized + (2 * (Vector3.Dot(body.velocity.normalized, col.contacts[0].normal)) * col.contacts[0].normal);
-                body.velocity = reflection * velocity;
+                if (smallerAsteroid == null)
+                {
+                    Destroy((Object)this.gameObject);
+                }
+                else
+                {
+                    Vector3 reflection = body.velocity.normalized + (2 * (Vector3.Dot(body.velocity.normalized, col.contacts[0].normal)) * col.contacts[0].normal);
+                    body.velocity = reflection * velocity;
+                }
+
             }
             else if ((col.gameObject.tag == "Enemy"))
             {
@@ -69,11 +76,6 @@ public class EnemyScript: MonoBehaviour
                         //Spawn two smaller asteroids
                         SpawnFragment(spawnAdjustment1, forceDirection);
                         SpawnFragment(spawnAdjustment2, -1 * forceDirection);
-                        
-                        /*
-                        Vector3 reflection = body.velocity.normalized + (2 * (Vector3.Dot(body.velocity.normalized, col.contacts[0].normal)) * col.contacts[0].normal);
-                        body.velocity = reflection * velocity;
-                        */
                     }
 
                     //Kill asteroid

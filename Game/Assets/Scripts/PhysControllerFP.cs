@@ -3,7 +3,13 @@ using System.Collections;
 
 public class PhysControllerFP : MonoBehaviour 
 {
-	private Rigidbody move;
+    private float period = 0.0f;
+    public float immuneTimeLimit = 3f;
+    private bool immune = false;
+    public string controller;
+    private GameplayController gameController = null;
+
+    private Rigidbody move;
 	private Vector3 movInputs;
 	public Vector3 movePos;
 	private Vector3 lookInputs;
@@ -17,25 +23,21 @@ public class PhysControllerFP : MonoBehaviour
 	public viewType _ViewType;
 	public float orthographicSize = 10;
 	private GameObject orthoDirection;
-	//public GameObject Shield;
 	public bool keyboardOnly = false;
 	public float keyboardSensitivity = 3f;
+
 	// Use this for initialization - dont drink cheap gin and code
 	void Awake () 
 	{
-		Cursor.lockState = CursorLockMode.Locked;
+        gameController = GameObject.Find(controller).GetComponent<GameplayController>();
+
+        Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 		move = this.GetComponents<Rigidbody>()[0];
 		if(_ViewType == viewType.Orthographic  || _ViewType == viewType.StaticCamera)
 		{
 			orthoDirection = new GameObject();
-            /* if(Shield != null)
-			{
-				Shield.transform.parent = this.gameObject.transform;
-				Shield.transform.position = this.gameObject.transform.position + new Vector3 (0, 1, 2);
-			}
-			else
-				Debug.LogError("Your shield GameObject slot is unnassigned on your PhysicsPlayer");*/
+            
 			head.GetComponent<Camera>().orthographic = true;
 			head.GetComponent<Camera>().orthographicSize = orthographicSize;
 			head.transform.rotation = Quaternion.Euler(90, 0,0);
@@ -58,8 +60,21 @@ public class PhysControllerFP : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		//pooling inputs
-		movInputs.x = Input.GetAxis("Horizontal");
+        //Update immunity status
+        if (immune == true)
+        {
+            if (period <= immuneTimeLimit)
+            {
+                period += Time.deltaTime;
+            }
+            else
+            {
+                immune = false;
+            }
+        }
+
+        //pooling inputs
+        movInputs.x = Input.GetAxis("Horizontal");
 		movInputs.z = Input.GetAxis("Vertical");
 		if(_ViewType == viewType.FPS)
 		{
@@ -103,7 +118,8 @@ public class PhysControllerFP : MonoBehaviour
 
 		else
 			newDir = transform.TransformDirection(movInputs);
-		//converting inputs into player Direction
+		
+        //converting inputs into player Direction
 		movePos = new Vector3(newDir.x  * moveSpeed , movePos.y, newDir.z * moveSpeed);
 
 		//applying gravity
@@ -114,7 +130,6 @@ public class PhysControllerFP : MonoBehaviour
 		}
 		else
 			movePos.y -= gravity * Time.deltaTime;
-
 
 		//clamping camera y rotation
 		lookInputs.x = Mathf.Clamp(lookInputs.x, -89, 89);
@@ -150,4 +165,18 @@ public class PhysControllerFP : MonoBehaviour
 		//do stuff
 	}
 
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.tag == "Enemy")
+        {
+            if (!immune)
+            {
+                gameController.DecrementLives();
+            }
+
+            immune = true;
+            
+
+        }
+    }
 }
