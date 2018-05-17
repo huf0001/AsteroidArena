@@ -309,15 +309,7 @@ MonoBehaviour:
   headDirection: {fileID: 382806636}
   spawner: {fileID: 382806635}
   shootForce: 30
-<<<<<<< HEAD
-<<<<<<< HEAD
   timerLimit: 2
-=======
-  timerLimit: 50
->>>>>>> 662602b6a1271353ec7f4f53b1092464e08c5dbd
-=======
-  timerLimit: 50
->>>>>>> 662602b6a1271353ec7f4f53b1092464e08c5dbd
   shootSound: {fileID: 0}
   asteroidParticle: {fileID: 0}
 --- !u!1 &428073464
@@ -450,16 +442,8 @@ MonoBehaviour:
   movePos: {x: 0, y: 0, z: 0}
   head: {fileID: 1881365479}
   sinceLastGrounded: 0
-<<<<<<< HEAD
-<<<<<<< HEAD
   moveSpeed: 20
   jumpHeight: 0
-=======
-=======
->>>>>>> 662602b6a1271353ec7f4f53b1092464e08c5dbd
-  moveSpeed: 30
-  jumpHeight: 10
->>>>>>> 662602b6a1271353ec7f4f53b1092464e08c5dbd
   gravity: 20
   _ViewType: 2
   orthographicSize: 20
