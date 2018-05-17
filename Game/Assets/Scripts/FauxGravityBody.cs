@@ -35,7 +35,10 @@ public class FauxGravityBody : MonoBehaviour {
 	}
 
     // This Update() function/code block runs once every frame
-	void Update () {
-		attractor.Attract(myTransform);
-	}
+	void Update ()
+    {
+        if (Input.GetKey(KeyCode.Space) || Input.GetAxis("Fire1") > 0.1f)
+            attractor.Attract(myTransform);
+        
+    }
 }
