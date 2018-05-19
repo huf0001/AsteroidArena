@@ -9,6 +9,10 @@ public class PhysControllerFP : MonoBehaviour
     public string controller;
     private GameplayController gameController = null;
 
+    public Light playerLight;
+    public Color normalColor;
+    public Color immuneColor;
+
     private Rigidbody move;
 	private Vector3 movInputs;
 	public Vector3 movePos;
@@ -30,7 +34,8 @@ public class PhysControllerFP : MonoBehaviour
 	void Awake () 
 	{
         gameController = GameObject.Find(controller).GetComponent<GameplayController>();
-
+        playerLight.color = normalColor;
+        
         Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 		move = this.GetComponents<Rigidbody>()[0];
@@ -75,6 +80,7 @@ public class PhysControllerFP : MonoBehaviour
             else
             {
                 immune = false;
+                playerLight.color = normalColor;
             }
         }
 
@@ -181,6 +187,7 @@ public class PhysControllerFP : MonoBehaviour
             }
 
             immune = true;
+            playerLight.color = immuneColor;
         }
     }
 }

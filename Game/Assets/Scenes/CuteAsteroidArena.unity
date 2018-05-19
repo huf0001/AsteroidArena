@@ -982,6 +982,7 @@ MonoBehaviour:
   spawner: {fileID: 382806635}
   shootForce: 30
   timerLimit: 2
+  asteroidLimit: 10
   shootSound: {fileID: 0}
   asteroidParticle: {fileID: 0}
 --- !u!1 &408685143
@@ -1449,6 +1450,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   immuneTimeLimit: 2
   controller: GameUI(Sam)
+  playerLight: {fileID: 1744949330}
+  normalColor: {r: 0, g: 0.7647059, b: 1, a: 1}
+  immuneColor: {r: 0, g: 1, b: 0, a: 1}
   movePos: {x: 0, y: 0, z: 0}
   head: {fileID: 1881365479}
   sinceLastGrounded: 0
@@ -4082,7 +4086,7 @@ GameObject:
   - component: {fileID: 1744949329}
   - component: {fileID: 1744949330}
   m_Layer: 0
-  m_Name: Point light
+  m_Name: PointLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4111,8 +4115,8 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 0, g: 0.7647059, b: 1, a: 1}
+  m_Intensity: 3
   m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
