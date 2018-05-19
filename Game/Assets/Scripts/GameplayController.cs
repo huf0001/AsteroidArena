@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
+
 public class GameplayController : MonoBehaviour 
 {
 	public int maxLives = 3;
@@ -14,8 +16,10 @@ public class GameplayController : MonoBehaviour
 
 	public Text scoreText;
 	private string scoreOutput = "Score - ";
+    private bool firstCollisionScore = true;
 
-	public Text timerText;
+
+    public Text timerText;
 	private string timeOutput = "Timer - ";
 
 	public GameObject ball;
@@ -45,11 +49,17 @@ public class GameplayController : MonoBehaviour
 
 	public void UpdateScore()
 	{
-		score ++;
-		scoreText.text = scoreOutput + score;
-		ball.transform.position = new Vector3(25, 2, 0);
-		ball.GetComponent<Rigidbody>().velocity = -ball.GetComponent<Rigidbody>().velocity;
-	}
+        if (firstCollisionScore)
+        {
+            score++;
+            scoreText.text = scoreOutput + score;
+            firstCollisionScore = false;
+        }
+        else
+        {
+            firstCollisionScore = true;
+        }
+    }
 
 	void UpdateTimer()
 	{
@@ -67,7 +77,7 @@ public class GameplayController : MonoBehaviour
 
 	void GameOver(string levelName)
 	{
-		PlayerPrefs.SetInt("score", score);
+		PlayerPrefs.SetInt("score", (int)score);
 		Application.LoadLevel(levelName);
 	}
 }

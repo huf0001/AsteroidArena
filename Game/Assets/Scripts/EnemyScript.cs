@@ -65,8 +65,10 @@ public class EnemyScript: MonoBehaviour
             }
             else if ((col.gameObject.tag == "Enemy"))
             {
-                if (VelocityCheck(col)) //if speeds are high enough
-                {
+                //if (VelocityCheck(col)) //if speeds are high enough
+                //{
+                    gameController.UpdateScore();
+
                     if (smallerAsteroid != null)
                     {
                         //Spawn fragments
@@ -74,7 +76,7 @@ public class EnemyScript: MonoBehaviour
                     }
 
                     Die();
-                }
+                //}
             }
             else if (collideParticle != null)
             {
