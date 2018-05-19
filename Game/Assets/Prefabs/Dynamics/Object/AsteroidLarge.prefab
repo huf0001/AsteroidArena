@@ -72,7 +72,6 @@ Transform:
   m_GameObject: {fileID: 1743700315334422}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 30.733032, y: 3.1, z: 25.971394}
-  m_LocalPosition: {x: 30.733032, y: 3.1, z: 25.971394}
   m_LocalScale: {x: 5, y: 1, z: 5}
   m_Children:
   - {fileID: 4664059713143294}
@@ -281,10 +280,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f18019b5f015c48bc5f8940c5ab654, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  randomForce: 1
   velocity: 5
   timerLimit: 2
+  speedLimit: 30
+  collisionSpeedThreshold: 10
   controller: GameUI(Sam)
+  spawner: SpawnPoint
   headDirection: {fileID: 0}
   shootForce: 30
   shootSound: {fileID: 0}

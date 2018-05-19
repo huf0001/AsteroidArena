@@ -11,6 +11,8 @@ public class EnemyScript: MonoBehaviour
     public float collisionSpeedThreshold = 10f;
 
     public string controller;
+    public string spawner;
+    private SpawnAsteroidScript spawnPoint;
     public Transform headDirection;
     public float shootForce = 30f;
     public AudioClip shootSound;
@@ -30,6 +32,8 @@ public class EnemyScript: MonoBehaviour
     {
         body = this.GetComponent<Rigidbody>();
         gameController = GameObject.Find(controller).GetComponent<GameplayController>();
+        spawnPoint = GameObject.Find(spawner).GetComponent<SpawnAsteroidScript>();
+        spawnPoint.AddAsteroid();
     }
 
     void Update()
@@ -57,8 +61,7 @@ public class EnemyScript: MonoBehaviour
                     Split();
                 }
 
-                //Kill asteroid
-                Destroy((Object)this.gameObject);
+                Die();
             }
             else if ((col.gameObject.tag == "Enemy"))
             {
@@ -70,8 +73,7 @@ public class EnemyScript: MonoBehaviour
                         Split();
                     }
 
-                    //Kill asteroid
-                    Destroy((Object)this.gameObject);
+                    Die();
                 }
             }
             else if (collideParticle != null)
@@ -158,4 +160,12 @@ public class EnemyScript: MonoBehaviour
         }
     }
 
+    void Die()
+    {
+        //Decrement asteroid count
+        spawnPoint.DeleteAsteroid();
+
+        //Kill asteroid
+        Destroy((Object)this.gameObject);
+    }
 }

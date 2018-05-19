@@ -16,6 +16,8 @@ public class SpawnAsteroidScript : MonoBehaviour
 	public float shootForce = 30f;
     public float timerLimit;
     private float period = 0.0f;
+    private int count;
+    public int asteroidLimit = 10;
 
     public AudioClip shootSound;
 	private AudioSource asteroidSource;
@@ -27,19 +29,31 @@ public class SpawnAsteroidScript : MonoBehaviour
 		asteroidSource = this.gameObject.AddComponent<AudioSource>();
 		asteroidSource.loop = false;
 		asteroidSource.playOnAwake = false;
+
         if (shootSound != null)
         {
             asteroidSource.clip = shootSound;
         }
+    }
 
+    public void AddAsteroid()
+    {
+        count += 1;
+    }
+
+    public void DeleteAsteroid()
+    {
+        count -= 1;
     }
 
 	void Update () 
 	{
-        if (period > timerLimit)
+        if ((period > timerLimit) && (count < asteroidLimit))
         {
             //Reset period
             period = 0;
+
+            //Incrementing the asteroid count is taken care of by the asteroid itself; it calls AddAsteroid
 
             //Randomise asteroid size
             int option = Random.Range(1, 4);
@@ -104,7 +118,7 @@ public class SpawnAsteroidScript : MonoBehaviour
                 z = -z;
             }
 
-            spawner.transform.position = new Vector3(x, -0.6f, z);
+            spawner.transform.position = new Vector3(x, -1.3f, z);
         }
 
         period += Time.deltaTime;
