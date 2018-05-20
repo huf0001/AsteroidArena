@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.IO;
 
 public class GameplayController : MonoBehaviour 
 {
@@ -17,7 +18,6 @@ public class GameplayController : MonoBehaviour
 	public Text scoreText;
 	private string scoreOutput = "Score - ";
     private bool firstCollisionScore = true;
-
 
     public Text timerText;
 	private string timeOutput = "Timer - ";
@@ -72,7 +72,9 @@ public class GameplayController : MonoBehaviour
 		lifeText.text = lifeOutput + playerLives;
 
         if (playerLives <= 0)
-			GameOver(gameOverScene);
+        {
+            GameOver(gameOverScene);
+        }
 	}
 
 	void GameOver(string levelName)

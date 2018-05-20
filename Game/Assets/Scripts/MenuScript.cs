@@ -19,29 +19,13 @@ public class MenuScript : MonoBehaviour
         }
         else
         {
-            SaveName();
+            PlayerPrefs.SetString("name", textDisplay.text);
 
             if (sceneName == null)
             {
                 Debug.Log("<color=orange>" + gameObject.name + ": No Scene Name Was given for LoadScene function!</color>");
             }
             SceneManager.LoadScene(sceneName); //load a scene
-        }
-    }
-
-    private void SaveName()
-    {
-        StreamWriter writer = new StreamWriter("Assets/Text Files/PlayerName.txt");
-        
-        try
-        {
-            writer.WriteLine(textDisplay.text);
-
-            writer.Close();
-        }
-        finally
-        {
-            writer.Close();
         }
     }
 }
