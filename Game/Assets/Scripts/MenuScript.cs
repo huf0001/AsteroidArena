@@ -2,28 +2,46 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO;
+using System;
+using System.Collections.Generic;
 
 public class MenuScript : MonoBehaviour 
 {
-    public Image textbox;
+    public Text placeholder;
     public Text textDisplay;
 
     public void LoadScene(string sceneName)
 	{
-        /*if (textDisplay.text == "")
+        if (textDisplay.text == "")
         {
-            textbox.color = new Color(255, 77, 77);
-            //ColorBlock cb = textbox.color;
-            //cb.normalColor = new Color(255, 120, 120);
-            //textbox.colors = cb;
+            placeholder.color = new Color(255, 0, 0, 255);
         }
         else
-        {*/
+        {
+            SaveName();
+
             if (sceneName == null)
             {
                 Debug.Log("<color=orange>" + gameObject.name + ": No Scene Name Was given for LoadScene function!</color>");
             }
             SceneManager.LoadScene(sceneName); //load a scene
-        //}
+        }
+    }
+
+    private void SaveName()
+    {
+        StreamWriter writer = new StreamWriter("Assets/Text Files/PlayerName.txt");
+        
+        try
+        {
+            writer.WriteLine(textDisplay.text);
+
+            writer.Close();
+        }
+        finally
+        {
+            writer.Close();
+        }
     }
 }

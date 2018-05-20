@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68938436ac514a3469958ff60f753218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textbox: {fileID: 407045360}
+  placeholder: {fileID: 1380165054}
   textDisplay: {fileID: 1595673573}
 --- !u!1 &407045357
 GameObject:
@@ -650,7 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 0.5019608}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
