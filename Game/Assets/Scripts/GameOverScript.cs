@@ -20,7 +20,7 @@ public class GameOverScript : MonoBehaviour
     private Text[] nameDisplays;
     private Text[] scoreDisplays;
 
-    private string filename = "Assets/Text Files/Scoreboard.txt";
+    private string filename = "Scoreboard/Scoreboard.txt";
     
     void Awake()
 	{
