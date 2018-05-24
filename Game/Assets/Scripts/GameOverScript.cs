@@ -77,13 +77,13 @@ public class GameOverScript : MonoBehaviour
 
         if (name != "")
         {
-            int score = 20; //PlayerPrefs.GetInt("score");
+            int score = PlayerPrefs.GetInt("score");
 
             foreach (KeyValuePair<int, int> p in scores)
             {
                 if (score >= p.Value)
                 {
-                    for (int i = scores.Count - 1; i > p.Key; i--)
+                    for (int i = scores.Count; i > p.Key; i--)
                     {
                         names[i] = names[i - 1];
                         scores[i] = scores[i - 1];
@@ -138,4 +138,9 @@ public class GameOverScript : MonoBehaviour
 			Debug.Log("<color=orange>"+gameObject.name+": No Scene Name Was given for the StartAgain function!</color>");
 		SceneManager.LoadScene(levelName);
 	}
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
