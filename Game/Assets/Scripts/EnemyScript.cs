@@ -5,10 +5,16 @@ public class EnemyScript: MonoBehaviour
 {
 	private Rigidbody body;
 	public float velocity = 10f;
-    private float period = 0.0f;
-    public float timerLimit;
-    public float speedLimit = 30f;
-    public float collisionSpeedThreshold = 10f;
+    private float spawnPeriod = 0.0f;
+    public float spawnTimerLimit;
+    private float destructiblePeriod = 0.0f;
+    public float destructibleTimeLimit = 3f;
+    //public float speedLimit = 30f;
+    //public float collisionSpeedThreshold = 10f;
+    private bool destructible = false;
+    public Color normalColor;
+    public Color destructibleColor;
+    private Light asteroidLight;
 
     public string controller;
     public string spawner;
@@ -34,13 +40,45 @@ public class EnemyScript: MonoBehaviour
         gameController = GameObject.Find(controller).GetComponent<GameplayController>();
         spawnPoint = GameObject.Find(spawner).GetComponent<SpawnAsteroidScript>();
         spawnPoint.AddAsteroid();
+
+        asteroidLight = this.gameObject.GetComponentInChildren<Light>();
+        asteroidLight.color = normalColor;
+    }
+
+    public bool Destructible
+    {
+        get
+        {
+            return destructible;
+        }
+
+        set
+        {
+            destructible = value;
+
+            if (destructible)
+            {
+                destructiblePeriod = 0f;
+                asteroidLight.color = destructibleColor;
+            }
+        }
     }
 
     void Update()
     {
-        if (period <= timerLimit)
+        if (spawnPeriod <= spawnTimerLimit)
         {
-            period += Time.deltaTime;
+            spawnPeriod += Time.deltaTime;
+        }
+
+        if (destructiblePeriod <= destructibleTimeLimit)
+        {
+            destructiblePeriod += Time.deltaTime;
+        }
+        else
+        {
+            destructible = false;
+            asteroidLight.color = normalColor;
         }
         
         if (transform.position.y != 2)
@@ -51,7 +89,7 @@ public class EnemyScript: MonoBehaviour
 
 	void OnCollisionEnter(Collision col)
 	{
-        if (period > timerLimit)
+        if (spawnPeriod > spawnTimerLimit)
         {
             if ((col.gameObject.tag == "Player") && (col.gameObject.GetComponent<PhysControllerFP>().Immune() == false))
             {
@@ -65,7 +103,7 @@ public class EnemyScript: MonoBehaviour
             }
             else if ((col.gameObject.tag == "Enemy"))
             {
-                if (VelocityCheck(col)) //if speeds are high enough
+                if ((destructible) || (col.gameObject.GetComponent<EnemyScript>().Destructible))
                 {
                     gameController.UpdateScore();
 
@@ -87,7 +125,7 @@ public class EnemyScript: MonoBehaviour
         
     }
 
-    bool VelocityCheck(Collision col)
+    /*bool VelocityCheck(Collision col)
     {
         bool result = false;
 
@@ -96,14 +134,14 @@ public class EnemyScript: MonoBehaviour
 
         if ((s1 > speedLimit) || (s2 > speedLimit))
         {
-            if (s1 + s2 < collisionSpeedThreshold)
+            if ((s1 + s2 <= collisionSpeedThreshold) && ((s1 + s2) * -1 <= collisionSpeedThreshold))
             {
                 result = true;
             }
         }
 
         return result;
-    }
+    }*/
 
     void Split()
     {

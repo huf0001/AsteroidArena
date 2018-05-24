@@ -10,7 +10,7 @@ public class GameplayController : MonoBehaviour
 	private int playerLives;
 	private Transform player;
 	private int score = 0;
-	public float maxTime = 100;
+	//public float maxTime = 100;
 	public Text lifeText;
 	public float sceneTime = 0;
 	private string lifeOutput = "Lives - ";
@@ -41,8 +41,8 @@ public class GameplayController : MonoBehaviour
 	{
 		sceneTime += Time.deltaTime;
 		UpdateTimer();
-		if(maxTime - sceneTime <= 0)
-			GameOver(gameOverScene);
+		//if(maxTime - sceneTime <= 0)
+		//	GameOver(gameOverScene);
 		if(playerLives <= 0)
 			GameOver(gameOverScene);
 	}
@@ -63,7 +63,39 @@ public class GameplayController : MonoBehaviour
 
 	void UpdateTimer()
 	{
-		timerText.text = timeOutput + (Mathf.RoundToInt(maxTime - sceneTime)).ToString();
+        string time = "";
+        int sec = Mathf.RoundToInt(sceneTime);
+        int min = 0;
+
+        while (sec >= 60)
+        {
+            sec -= 60;
+            min++;
+        }
+
+        if (min > 9)
+        {
+            time = time + min;
+        }
+        else
+        {
+            time = time + "0";
+            time = time + min;
+        }
+
+        time = time + ":";
+
+        if (sec > 9)
+        {
+            time = time + sec;
+        }
+        else
+        {
+            time = time + "0";
+            time = time + sec;
+        }
+
+        timerText.text = time;
 	}
 
 	public void DecrementLives()

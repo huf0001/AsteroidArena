@@ -6,6 +6,7 @@ public class FauxGravityAttractor : MonoBehaviour
 {
 
     public float gravity = -10;
+    public float destDistanceLimit = 10f;
 
     public void Attract(Transform body)
     {
@@ -16,5 +17,10 @@ public class FauxGravityAttractor : MonoBehaviour
         Rigidbody rb = body.GetComponent<Rigidbody>();
         float dist = Vector3.Distance(transform.position, body.position);
         rb.AddForce((gravityUp * gravity) / (Mathf.Pow(dist, 2)));
+
+        if (dist < destDistanceLimit)
+        {
+            body.gameObject.GetComponent<EnemyScript>().Destructible = true;
+        }
     }
 }

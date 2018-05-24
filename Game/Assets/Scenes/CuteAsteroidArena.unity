@@ -1436,6 +1436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gravity: -10000
+  destDistanceLimit: 20
 --- !u!114 &657089956
 MonoBehaviour:
   m_ObjectHideFlags: 0

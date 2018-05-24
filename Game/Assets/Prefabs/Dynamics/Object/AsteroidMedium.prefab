@@ -269,9 +269,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 5
-  timerLimit: 2
-  speedLimit: 30
-  collisionSpeedThreshold: 10
+  spawnTimerLimit: 0
+  destructibleTimeLimit: 3
+  normalColor: {r: 1, g: 0, b: 0, a: 1}
+  destructibleColor: {r: 0.7254902, g: 0, b: 1, a: 1}
   controller: GameUI(Sam)
   spawner: SpawnPoint
   headDirection: {fileID: 0}
