@@ -1,10 +1,4 @@
 ﻿using UnityEngine;
-//using System.Collections;
-//using UnityEngine.UI;
-//using UnityEngine.SceneManagement;
-//using System.Collections.Generic;
-//using System.IO;
-//using System;
 
 public class TimeConverter //: MonoBehaviour
 {

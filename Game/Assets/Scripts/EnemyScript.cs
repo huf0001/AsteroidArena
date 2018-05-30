@@ -74,6 +74,8 @@ public class EnemyScript: MonoBehaviour
         if (destructiblePeriod <= destructibleTimeLimit)
         {
             destructiblePeriod += Time.deltaTime;
+
+            //if period < 1/2 limit, ping arena audio
         }
         else
         {

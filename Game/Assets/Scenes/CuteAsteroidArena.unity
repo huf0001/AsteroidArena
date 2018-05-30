@@ -790,6 +790,20 @@ GameObject:
   m_PrefabParentObject: {fileID: 1642807643205636, guid: d2c6b4384017d194f900a98e396f54cb,
     type: 2}
   m_PrefabInternal: {fileID: 1583538257}
+--- !u!114 &232775052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 232775051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9e09cd9a524143409f4e6742fad53b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arenaSound1: {fileID: 8300000, guid: 6ecb6bf4975ae8549bbf0fcff8d29307, type: 3}
+  arenaSound2: {fileID: 8300000, guid: b81ba21dfad0cc34d8e1d8e474948b2a, type: 3}
+  arenaSound3: {fileID: 8300000, guid: fb84099ae1df0704eaae9f9429d2c0ef, type: 3}
 --- !u!1 &356638811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,7 +1472,6 @@ MonoBehaviour:
   head: {fileID: 1881365479}
   sinceLastGrounded: 0
   moveSpeed: 20
-  jumpHeight: 0
   gravity: 20
   _ViewType: 2
   orthographicSize: 20
@@ -4691,7 +4704,7 @@ GameObject:
   - component: {fileID: 1881365481}
   - component: {fileID: 1881365480}
   m_Layer: 0
-  m_Name: PlayerCamera
+  m_Name: FPCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

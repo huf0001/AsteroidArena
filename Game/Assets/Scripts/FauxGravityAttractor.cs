@@ -22,5 +22,9 @@ public class FauxGravityAttractor : MonoBehaviour
         {
             body.gameObject.GetComponent<EnemyScript>().Destructible = true;
         }
+        //else
+        //{
+            //ping arena audio script
+        //}
     }
 }
