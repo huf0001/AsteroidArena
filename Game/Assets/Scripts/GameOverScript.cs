@@ -8,7 +8,7 @@ using System;
 
 public class GameOverScript : MonoBehaviour 
 {
-	public Text endText;
+    public Text endText;
     public Text namesParent;
     public Text progressesParent;
     public Text timesParent;
@@ -29,9 +29,11 @@ public class GameOverScript : MonoBehaviour
     
     void Awake()
 	{
-		Cursor.lockState = CursorLockMode.Confined;
+        //Debug.Log("<color=orange>" + gameObject.name + ": Running GameOverScript.</color>");
+
+        Cursor.lockState = CursorLockMode.Confined;
 		Cursor.visible = true; // make the cursor useable again.
-        
+
         LoadScoreboard();
         SaveScoreboard();
 	}
@@ -40,7 +42,20 @@ public class GameOverScript : MonoBehaviour
     {
         LoadScoreboardObjects();
         ReadScoreboardData();
-        UpdateScoreboardData();
+
+        //For some reason, GameOverScript.cs seems to be running twice when you play through, despite running normally
+        //when you load it straight from the GameOver scene without playing through the arena. I have no idea how to 
+        //stop it running twice, as I have no idea how it is running twice. It's only attached to the camera object,
+        //and only once. This if statement shouldstop the score the player gets from being loaded into the scoreboard 
+        //twice at least, so players don't notice this weirdness behind the scenes. Don't put this if statement around
+        //LoadScoreboard() and SaveScoreboard() in Awake(), as that just results in nothing being printed at all,
+        //and I'm guessing that GameOverScript.cs at least resets the Text objects' .text fields when it loads the
+        //second time.
+        if (PlayerPrefs.GetInt("saved") == 0)
+        {
+            UpdateScoreboardData();
+            PlayerPrefs.SetInt("saved", 1);
+        }
         PrintScoreboardData();
     }
 
@@ -80,6 +95,7 @@ public class GameOverScript : MonoBehaviour
 
     private void UpdateScoreboardData()
     {
+        //Debug.Log("<color=orange>" + gameObject.name + ": Running UpdateScoreboardData().</color>");
         playerName = PlayerPrefs.GetString("name");
 
         if (playerName != "")
@@ -89,7 +105,7 @@ public class GameOverScript : MonoBehaviour
 
             foreach (KeyValuePair<int, int> p in progresses)
             {
-                if (playerProgress > p.Value) 
+                if (playerProgress > p.Value)
                 {
                     for (int i = progresses.Count; i > p.Key; i--)
                     {

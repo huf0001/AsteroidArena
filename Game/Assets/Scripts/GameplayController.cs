@@ -6,8 +6,6 @@ using System.IO;
 
 public class GameplayController : MonoBehaviour 
 {
-    //private Transform player;
-
     public int maxLives = 3;
     private int playerLives;
     public Text lifeText;
@@ -21,20 +19,18 @@ public class GameplayController : MonoBehaviour
     private float sceneTime = 0;
     public Text timerText;
     private TimeConverter converter = new TimeConverter();
-    //private string timeOutput = "Timer - ";
 
-    //public GameObject gameOverText;
     public string gameOverScene;
 
     void Awake()
 	{
 		PlayerPrefs.SetInt("progress", 0);
+        PlayerPrefs.SetInt("time", 0);
+        PlayerPrefs.SetInt("saved", 0);
 		progressText.text = progressOutput + progress;
 
         playerLives = maxLives;
         lifeText.text = lifeOutput + playerLives;
-
-        //player = GameObject.Find ("PhysicsPlayer").transform;
     }
 
 	void Update () 
@@ -66,43 +62,6 @@ public class GameplayController : MonoBehaviour
             firstCollisionInPair = true;
         }
     }
-
-	/*void UpdateTimer()
-	{
-        string time = "";
-        int sec = Mathf.RoundToInt(sceneTime);
-        int min = 0;
-
-        while (sec >= 60)
-        {
-            sec -= 60;
-            min++;
-        }
-
-        if (min > 9)
-        {
-            time = time + min;
-        }
-        else
-        {
-            time = time + "0";
-            time = time + min;
-        }
-
-        time = time + ":";
-
-        if (sec > 9)
-        {
-            time = time + sec;
-        }
-        else
-        {
-            time = time + "0";
-            time = time + sec;
-        }
-
-        timerText.text = time;
-	}*/
 
 	public void DecrementLives()
 	{
