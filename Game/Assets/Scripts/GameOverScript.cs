@@ -54,7 +54,6 @@ public class GameOverScript : MonoBehaviour
         if (PlayerPrefs.GetInt("saved") == 0)
         {
             UpdateScoreboardData();
-            PlayerPrefs.SetInt("saved", 1);
         }
         PrintScoreboardData();
     }
@@ -97,12 +96,13 @@ public class GameOverScript : MonoBehaviour
     {
         //Debug.Log("<color=orange>" + gameObject.name + ": Running UpdateScoreboardData().</color>");
         playerName = PlayerPrefs.GetString("name");
+        playerProgress = PlayerPrefs.GetInt("progress");
+        playerTime = PlayerPrefs.GetInt("time");
+
+        int position = -1;
 
         if (playerName != "")
         {
-            playerProgress = PlayerPrefs.GetInt("progress");
-            playerTime = PlayerPrefs.GetInt("time");
-
             foreach (KeyValuePair<int, int> p in progresses)
             {
                 if (playerProgress > p.Value)
@@ -117,6 +117,7 @@ public class GameOverScript : MonoBehaviour
                     names[p.Key] = playerName;
                     progresses[p.Key] = playerProgress;
                     times[p.Key] = playerTime;
+                    position = p.Key;
                     break;
                 }
                 else if (playerProgress == p.Value)
@@ -133,11 +134,15 @@ public class GameOverScript : MonoBehaviour
                         names[p.Key] = playerName;
                         progresses[p.Key] = playerProgress;
                         times[p.Key] = playerTime;
+                        position = p.Key;
                         break;
                     }
                 }
             }
         }
+
+        PlayerPrefs.SetInt("position", position);
+        PlayerPrefs.SetInt("saved", 1);
     }
 
     private void PrintScoreboardData()
@@ -183,9 +188,11 @@ public class GameOverScript : MonoBehaviour
 
 	public void StartAgain(string levelName)
 	{
-		if (levelName == null)
-			Debug.Log("<color=orange>"+gameObject.name+": No Scene Name Was given for the StartAgain function!</color>");
-		SceneManager.LoadScene(levelName);
+        if (levelName == null)
+        {
+            Debug.Log("<color=orange>" + gameObject.name + ": No Scene Name Was given for the StartAgain function!</color>");
+        }
+        SceneManager.LoadScene(levelName);
 	}
 
     public void QuitGame()

@@ -78,6 +78,7 @@ public class GameplayController : MonoBehaviour
 	{
 		PlayerPrefs.SetInt("progress", (int)progress);
         PlayerPrefs.SetInt("time", (int)Mathf.RoundToInt(sceneTime));
+        PlayerPrefs.SetInt("position", -2);
 		Application.LoadLevel(levelName);
 	}
 }
