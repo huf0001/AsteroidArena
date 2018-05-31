@@ -23,7 +23,6 @@ public class FauxGravityBody : MonoBehaviour
         }
     }
 
-
     // This Start() function/code runs at 'inital' play button pressing
     void Start ()
     {
@@ -31,15 +30,13 @@ public class FauxGravityBody : MonoBehaviour
 
         rb.constraints = RigidbodyConstraints.FreezeRotation;
         rb.useGravity = false;
-		myTransform = transform;
-	}
 
-    // This Update() function/code block runs once every frame
-	void Update ()
+		myTransform = transform;
+        attractor.AddFauxGravBody(myTransform);
+    }
+
+    public void Die()
     {
-        if ((Input.GetKey(KeyCode.Space)) || (Input.GetAxis("Fire1") > 0.1f))
-        {
-            attractor.Attract(myTransform);
-        }
+        attractor.RemoveFauxGravBody(myTransform);
     }
 }

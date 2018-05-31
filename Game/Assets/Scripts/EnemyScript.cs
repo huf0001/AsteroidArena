@@ -74,8 +74,6 @@ public class EnemyScript: MonoBehaviour
         if (destructiblePeriod <= destructibleTimeLimit)
         {
             destructiblePeriod += Time.deltaTime;
-
-            //if period < 1/2 limit, ping arena audio
         }
         else
         {
@@ -206,6 +204,9 @@ public class EnemyScript: MonoBehaviour
     {
         //Decrement asteroid count
         spawnPoint.DeleteAsteroid();
+
+        //Remove asteroid from attractor
+        GetComponent<FauxGravityBody>().Die();
 
         //Kill asteroid
         Destroy((Object)this.gameObject);

@@ -801,9 +801,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9e09cd9a524143409f4e6742fad53b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arenaSound1: {fileID: 8300000, guid: 6ecb6bf4975ae8549bbf0fcff8d29307, type: 3}
-  arenaSound2: {fileID: 8300000, guid: b81ba21dfad0cc34d8e1d8e474948b2a, type: 3}
-  arenaSound3: {fileID: 8300000, guid: fb84099ae1df0704eaae9f9429d2c0ef, type: 3}
+  arenaMusic1: {fileID: 8300000, guid: 6ecb6bf4975ae8549bbf0fcff8d29307, type: 3}
+  arenaMusic2: {fileID: 8300000, guid: b81ba21dfad0cc34d8e1d8e474948b2a, type: 3}
+  arenaMusic3: {fileID: 8300000, guid: fb84099ae1df0704eaae9f9429d2c0ef, type: 3}
+  defaultGravMusic: {fileID: 8300000, guid: cc2028db8d968704f815226a8405feea, type: 3}
+  gravMusic1: {fileID: 8300000, guid: 2f203b50770720b4d9569ff33f5aa817, type: 3}
+  gravMusic2: {fileID: 8300000, guid: 9fd61e861e981d947a546027718909c4, type: 3}
+  gravMusic3: {fileID: 8300000, guid: 4c124e9685d99f24dba8cfbe977e616c, type: 3}
+  gravMusic4: {fileID: 8300000, guid: d97045453dbd7a84ba7bed44f9587e91, type: 3}
+  gravMusic5: {fileID: 8300000, guid: 5a6ae6fba864fda4282dfecc51cc3467, type: 3}
+  gravMusic6: {fileID: 8300000, guid: 0e0915afb576b0444aeb92b096617d19, type: 3}
+  gravMusic7: {fileID: 8300000, guid: c3079d327732c684b816de4a6d4f7f3b, type: 3}
+  gravMusic8: {fileID: 8300000, guid: 2768648e394ed63488ad5bb45aa2cfeb, type: 3}
+  gravMusic9: {fileID: 8300000, guid: 1b59388fa1f31eb448c63846868babb6, type: 3}
+  gravMusic10: {fileID: 8300000, guid: d350c1cefad20e34b9b02392ff0898e2, type: 3}
+  gravMusic11: {fileID: 8300000, guid: 5e1f2a50629b64d4a9336e47910a83d2, type: 3}
+  gravMusic12: {fileID: 8300000, guid: af3260909551dc345b0c0c7ab3bbf80c, type: 3}
 --- !u!1 &356638811
 GameObject:
   m_ObjectHideFlags: 0
@@ -1451,6 +1464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: -10000
   destDistanceLimit: 20
+  gameUI: {fileID: 232775051}
 --- !u!114 &657089956
 MonoBehaviour:
   m_ObjectHideFlags: 0
