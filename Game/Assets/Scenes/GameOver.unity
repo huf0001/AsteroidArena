@@ -624,7 +624,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc5ce8b7961e52f4c83aae9d2d25bd40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverSound: {fileID: 8300000, guid: c78150ac76f886b4a8cce3b1d8fe2558, type: 3}
+  standardAudio: {fileID: 8300000, guid: c78150ac76f886b4a8cce3b1d8fe2558, type: 3}
+  completionAudio: {fileID: 8300000, guid: 23aad832ec7c2184f96a7de5fed50ff0, type: 3}
+  topScoreAudio: {fileID: 8300000, guid: d5a5675e62d1c1847a6e1a840a37bf3f, type: 3}
 --- !u!1 &336319262
 GameObject:
   m_ObjectHideFlags: 0
