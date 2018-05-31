@@ -6,6 +6,7 @@ public class FauxGravityAttractor : MonoBehaviour
 {
     public float gravity = -10;
     public float destDistanceLimit = 10f;
+    public float DropOff = 1;
     private bool gravOn = false;
     private bool anyDestructible = false;
     private bool lastPing = true;
@@ -67,7 +68,7 @@ public class FauxGravityAttractor : MonoBehaviour
 
         Rigidbody rb = body.GetComponent<Rigidbody>();
         float dist = Vector3.Distance(transform.position, body.position);
-        rb.AddForce((gravityUp * gravity) / (Mathf.Pow(dist, 2)));
+        rb.AddForce((gravityUp * gravity) / ((Mathf.Pow(dist, 2) / DropOff)));
 
         if (dist < destDistanceLimit)
         {
