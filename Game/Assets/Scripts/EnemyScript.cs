@@ -21,14 +21,18 @@ public class EnemyScript: MonoBehaviour
     private SpawnAsteroidScript spawnPoint;
     public Transform headDirection;
     public float shootForce = 30f;
-    public AudioClip shootSound;
-    private AudioSource asteroidSource;
+
     public GameObject asteroidParticle;
     private ParticleSystem asteroidParticleSystem;
 
     public GameObject smallerAsteroid = null;
     public GameObject collideParticle;
     private GameObject tempParticles;
+
+    public AudioClip thudSound;
+    public AudioClip breakSound;
+    private AudioSource thudSource;
+    private AudioSource breakSource;    
 
     //public GameObject controller;
 	private GameplayController gameController = null;
@@ -43,6 +47,32 @@ public class EnemyScript: MonoBehaviour
 
         asteroidLight = this.gameObject.GetComponentInChildren<Light>();
         asteroidLight.color = normalColor;
+
+        thudSource = this.gameObject.AddComponent<AudioSource>();
+        breakSource = this.gameObject.AddComponent<AudioSource>();
+
+        if (thudSound != null)
+        {
+            thudSource.clip = thudSound;
+            thudSource.playOnAwake = false;
+            thudSource.loop = false;
+        }
+        else
+        {
+            Debug.Log("<color=orange>" + gameObject.name + ": Error loading thudSound.</color>");
+        }
+
+        if (breakSound != null)
+        {
+            breakSource.clip = breakSound;
+            breakSource.playOnAwake = false;
+            breakSource.loop = false;
+            breakSource.volume = breakSource.volume * 2f;
+        }
+        else
+        {
+            Debug.Log("<color=orange>" + gameObject.name + ": Error loading breakSound.</color>");
+        }
     }
 
     public bool Destructible
@@ -83,7 +113,17 @@ public class EnemyScript: MonoBehaviour
         
         if (transform.position.y != 2)
         {
-            transform.position = new Vector3 (transform.position.x, 2, transform.position.z);
+            transform.position = new Vector3 (transform.position.x, 2f, transform.position.z);
+        }
+
+        CheckInBounds();
+    }
+
+    private void CheckInBounds()
+    {
+        if ((transform.position.x > 120) || (transform.position.x < -120) || (transform.position.z > 120) || (transform.position.z < -120))
+        {
+            Die();
         }
     }
 
@@ -99,6 +139,9 @@ public class EnemyScript: MonoBehaviour
                     Split();
                 }
 
+                //Play break sound
+                breakSource.Play();
+
                 Die();
             }
             else if ((col.gameObject.tag == "Enemy"))
@@ -113,11 +156,22 @@ public class EnemyScript: MonoBehaviour
                         Split();
                     }
 
+                    //Play break sound
+                    breakSource.Play();
+
                     Die();
+                }
+                else
+                {
+                    //Play thud sound
+                    thudSource.Play();
                 }
             }
             else if (collideParticle != null)
             {
+                //Play thud sound
+                thudSource.Play();
+
                 tempParticles = (GameObject)Instantiate(collideParticle, transform.position, Quaternion.identity);
                 tempParticles.GetComponent<ParticleSystem>().Play();
             }

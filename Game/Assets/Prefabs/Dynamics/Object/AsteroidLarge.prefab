@@ -289,12 +289,13 @@ MonoBehaviour:
   spawner: SpawnPoint
   headDirection: {fileID: 0}
   shootForce: 30
-  shootSound: {fileID: 0}
   asteroidParticle: {fileID: 0}
   smallerAsteroid: {fileID: 1999781903698104, guid: 13fe7b2ca34351d4fbab0427fedf6269,
     type: 2}
   collideParticle: {fileID: 1534790831634872, guid: e03aa621092adc046bc41c5de39d473c,
     type: 2}
+  thudSound: {fileID: 8300000, guid: 320ff1dc8ec404e4b81208012d9907b9, type: 3}
+  breakSound: {fileID: 8300000, guid: 079b2b84a4ccfc546bd52bb0c794c708, type: 3}
 --- !u!135 &135450522669852290
 SphereCollider:
   m_ObjectHideFlags: 1

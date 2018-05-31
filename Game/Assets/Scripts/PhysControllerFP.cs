@@ -14,6 +14,9 @@ public class PhysControllerFP : MonoBehaviour
     public Color normalColor;
     public Color immuneColor;
 
+    public AudioClip collisionSound;
+    private AudioSource collisionSource;
+
     private Rigidbody move;
 	private Vector3 movInputs;
 	public Vector3 movePos;
@@ -38,6 +41,19 @@ public class PhysControllerFP : MonoBehaviour
 	{
         gameController = GameObject.Find(controller).GetComponent<GameplayController>();
         playerLight.color = normalColor;
+
+        collisionSource = this.gameObject.AddComponent<AudioSource>();
+        collisionSource.playOnAwake = false;
+        collisionSource.loop = false;
+
+        if (collisionSound == null)
+        {
+            //error message
+        }
+        else
+        {
+            collisionSource.clip = collisionSound;
+        }
         
         Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
@@ -223,6 +239,8 @@ public class PhysControllerFP : MonoBehaviour
 
             immune = true;
             playerLight.color = immuneColor;
+
+            collisionSource.Play();
         }
     }
 }

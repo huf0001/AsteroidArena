@@ -2631,6 +2631,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: collisionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b11756b6bd3b5c647a1fe8c771e5217f, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
   m_IsPrefabParent: 0
