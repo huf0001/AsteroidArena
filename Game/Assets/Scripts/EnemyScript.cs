@@ -15,8 +15,7 @@ public class EnemyScript: MonoBehaviour
     public Color normalColor;
     public Color destructibleColor;
     private Light asteroidLight;
-
-    public string controller;
+    
     public string spawner;
     private SpawnAsteroidScript spawnPoint;
     public Transform headDirection;
@@ -29,50 +28,24 @@ public class EnemyScript: MonoBehaviour
     public GameObject collideParticle;
     private GameObject tempParticles;
 
-    public AudioClip thudSound;
-    public AudioClip breakSound;
-    private AudioSource thudSource;
-    private AudioSource breakSource;    
+    public string controller;
+    private GameplayController gameController = null;
+    private ArenaAudioScript audioScript = null;
 
-    //public GameObject controller;
-	private GameplayController gameController = null;
+    public int lives = 100;
 	
     // Use this for initialization
 	void Awake ()
     {
         //body = this.GetComponent<Rigidbody>();
         gameController = GameObject.Find(controller).GetComponent<GameplayController>();
+        audioScript = GameObject.Find(controller).GetComponent<ArenaAudioScript>();
+
         spawnPoint = GameObject.Find(spawner).GetComponent<SpawnAsteroidScript>();
         spawnPoint.AddAsteroid();
 
         asteroidLight = this.gameObject.GetComponentInChildren<Light>();
         asteroidLight.color = normalColor;
-
-        thudSource = this.gameObject.AddComponent<AudioSource>();
-        breakSource = this.gameObject.AddComponent<AudioSource>();
-
-        if (thudSound != null)
-        {
-            thudSource.clip = thudSound;
-            thudSource.playOnAwake = false;
-            thudSource.loop = false;
-        }
-        else
-        {
-            Debug.Log("<color=orange>" + gameObject.name + ": Error loading thudSound.</color>");
-        }
-
-        if (breakSound != null)
-        {
-            breakSource.clip = breakSound;
-            breakSource.playOnAwake = false;
-            breakSource.loop = false;
-            breakSource.volume = breakSource.volume * 2f;
-        }
-        else
-        {
-            Debug.Log("<color=orange>" + gameObject.name + ": Error loading breakSound.</color>");
-        }
     }
 
     public bool Destructible
@@ -131,6 +104,8 @@ public class EnemyScript: MonoBehaviour
 	{
         if (spawnPeriod > spawnTimerLimit)
         {
+            lives -= 1;
+
             if ((col.gameObject.tag == "Player") && (col.gameObject.GetComponent<PhysControllerFP>().Immune() == false))
             {
                 if (smallerAsteroid != null)
@@ -139,10 +114,7 @@ public class EnemyScript: MonoBehaviour
                     Split();
                 }
 
-                //Play break sound
-                breakSource.Play();
-
-                Die();
+                LoudDie();
             }
             else if ((col.gameObject.tag == "Enemy"))
             {
@@ -156,27 +128,34 @@ public class EnemyScript: MonoBehaviour
                         Split();
                     }
 
-                    //Play break sound
-                    breakSource.Play();
-
-                    Die();
+                    LoudDie();
                 }
                 else
                 {
-                    //Play thud sound
-                    thudSource.Play();
+                    //Play break sound
+                    audioScript.PlayCollisionSFX("thud");
                 }
             }
             else if (collideParticle != null)
             {
-                //Play thud sound
-                thudSource.Play();
+                //Play break sound
+                audioScript.PlayCollisionSFX("thud");
 
                 tempParticles = (GameObject)Instantiate(collideParticle, transform.position, Quaternion.identity);
                 tempParticles.GetComponent<ParticleSystem>().Play();
             }
+
+            if (lives == 0)
+            {
+                if (smallerAsteroid != null)
+                {
+                    //Spawn fragments
+                    Split();
+                }
+
+                LoudDie();
+            }
         }
-        
     }
 
     /*bool VelocityCheck(Collision col)
@@ -252,6 +231,14 @@ public class EnemyScript: MonoBehaviour
         {
             Debug.LogError("The gameobject you are trying to use does not have a rigidbody");
         }
+    }
+
+    void LoudDie()
+    {
+        //Play break sound
+        audioScript.PlayCollisionSFX("break");
+
+        Die();
     }
 
     void Die()

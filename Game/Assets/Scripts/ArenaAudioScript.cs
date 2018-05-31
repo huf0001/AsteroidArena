@@ -28,6 +28,13 @@ public class ArenaAudioScript : MonoBehaviour
     private List<AudioClip> arenaSounds = new List<AudioClip>();
     private List<AudioClip> gravMusicSounds = new List<AudioClip>();
 
+    public AudioClip thudSound;
+    public AudioClip breakSound;
+    public AudioClip hitSound;
+    private AudioSource thudSource;
+    private AudioSource breakSource;
+    private AudioSource hitSource;
+
     int index = 1;
 
     private bool gravOn = false;
@@ -39,6 +46,10 @@ public class ArenaAudioScript : MonoBehaviour
     {
         arenaSource = this.gameObject.AddComponent<AudioSource>();
         gravMusicSource = this.gameObject.AddComponent<AudioSource>();
+        breakSource = this.gameObject.AddComponent<AudioSource>();
+        thudSource = this.gameObject.AddComponent<AudioSource>();
+        hitSource = this.gameObject.AddComponent<AudioSource>();
+
 
         arenaSource.loop = false;
         arenaSource.playOnAwake = true;
@@ -62,6 +73,10 @@ public class ArenaAudioScript : MonoBehaviour
         AddSoundToList(gravMusic11, gravMusicSounds, "gravMusicSound11");
         AddSoundToList(gravMusic12, gravMusicSounds, "gravMusicSound12");
 
+        LoadSound(breakSound, breakSource, "breakSound");
+        LoadSound(thudSound, thudSource, "thudSound");
+        LoadSound(hitSound, hitSource, "hitSound");
+
         for (int i = 0; i < arenaSounds.Count; i++)
         {
             if (arenaSounds[i] != null)
@@ -75,6 +90,20 @@ public class ArenaAudioScript : MonoBehaviour
         if (!arenaSource.isPlaying)
         {
             Debug.Log("<color=orange>" + gameObject.name + ": No background Audio is being run.</color>");
+        }
+    }
+
+    private void LoadSound(AudioClip sound, AudioSource source, string name)
+    {
+        if (sound != null)
+        {
+            source.clip = sound;
+            source.playOnAwake = false;
+            source.loop = false;
+        }
+        else
+        {
+            Debug.Log("<color=orange>" + gameObject.name + ": Error loading " + name + ". It's value is null.</color>");
         }
     }
 
@@ -143,6 +172,22 @@ public class ArenaAudioScript : MonoBehaviour
                 return gravMusicSounds[0];
             default:
                 return gravMusicSounds[Random.Range(0, gravMusicSounds.Count)];
+        }
+    }
+
+    public void PlayCollisionSFX(string name)
+    {
+        switch (name)
+        {
+            case "thud":
+                thudSource.Play();
+                break;
+            case "break":
+                breakSource.Play();
+                break;
+            case "hit":
+                hitSource.Play();
+                break;
         }
     }
 }
