@@ -26,6 +26,10 @@ public class GameOverScript : MonoBehaviour
 
     private string filename = "Scoreboard/Scoreboard.txt";
     private TimeConverter converter = new TimeConverter();
+
+    public GameObject avatar;
+    public Material asteroidMaterial;
+    public Material earthMaterial;
     
     void Awake()
 	{
@@ -36,7 +40,9 @@ public class GameOverScript : MonoBehaviour
 
         LoadScoreboard();
         SaveScoreboard();
-	}
+
+        UpdatePlayerAvatar();
+    }
 
     private void LoadScoreboard()
     {
@@ -162,7 +168,7 @@ public class GameOverScript : MonoBehaviour
             timeDisplays[p.Key].text = "" + converter.SecondsToDigitalDisplay(p.Value);
         }
 
-        endText.text = "GAME OVER! PROGRESS: " + playerProgress + "%";
+        endText.text = "GAME OVER! " + converter.SecondsToDigitalDisplay(PlayerPrefs.GetInt("time")) + " - " + PlayerPrefs.GetInt("progress") + "%";
     }
 
     private void SaveScoreboard()
@@ -183,6 +189,21 @@ public class GameOverScript : MonoBehaviour
         finally
         {
             writer.Close();
+        }
+    }
+
+    private void UpdatePlayerAvatar()
+    {
+        MeshRenderer mesh = avatar.GetComponent<MeshRenderer>();
+        int progress = PlayerPrefs.GetInt("progress");
+
+        if (progress == 100)
+        {
+            mesh.material = earthMaterial;
+        }
+        else 
+        {
+            mesh.material = asteroidMaterial;
         }
     }
 
