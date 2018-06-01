@@ -1,0 +1,35 @@
+Instructions:
+	When the start screen loads, enter your name and hit play.
+		When the arena loads, use your gravity to manipulate the surrounding asteroids to collide with
+	each other. 
+
+	 - 	Asteroids that are close enough to you while you have gravity on will become destructible for
+		three seconds after either the gravity is turned off or they move out of range.
+	 - 	If an asteroid hits a destructible asteroid, or collides with any asteroid while it is destructible
+		itself, both will die.
+	 - 	If a large or medium asteroid dies, it will split into two asteroids of the size immediately below 
+		it (small asteroids will just die).
+
+	If you manipulate asteroids to collide and kill each other, you will progress by 1%. This is your progress
+	towards being promoted from "asteroid" to "planet". Reach 100% to win and become a planet. Do it the
+	fastest, and you will jump to the top of the scoreboard. 
+		If you get hit by an asteroid, you will lose a life and gain a few seconds of immunity. Lose all
+	of your lives, and it's GAME OVER!
+		At the end of the game, feel free to try again or to quit.
+
+Controls:
+	W: Up
+	A: Left
+	S: Down
+	D: Right
+
+	Hold Spacebar: Gravity on
+	Hold Left Mouse Button: Gravity on
+
+Notes:
+	When you open the build, in the input section, it lists	a number of other control options. No idea how to pull
+	those out (it's probably been mentioned and forgotten), so just ignore them. None of them should have any function
+	anyway. Jumping with the spacebar and rotating with the left/right arrow keys was definitely disabled, so don't
+	bother trying to do either of those things.
+
+Enjoy :)
