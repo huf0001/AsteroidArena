@@ -34,6 +34,10 @@ public class EnemyScript: MonoBehaviour
     private GameplayController gameController = null;
     private ArenaAudioScript audioScript = null;
 
+    private TrailRenderer tailRenderer;
+    public Material normalMaterial;
+    public Material destructibleMaterial;
+
     public int lives = 100;
 	
     // Use this for initialization
@@ -49,6 +53,9 @@ public class EnemyScript: MonoBehaviour
         asteroidLight = this.gameObject.GetComponentInChildren<Light>();
         asteroidLight.color = normalColor;
         asteroidLight.intensity = normalIntensity;
+
+        tailRenderer = this.gameObject.GetComponent<TrailRenderer>();
+        tailRenderer.material = normalMaterial;
     }
 
     public bool Destructible
@@ -67,6 +74,7 @@ public class EnemyScript: MonoBehaviour
                 destructiblePeriod = 0f;
                 asteroidLight.color = destructibleColor;
                 asteroidLight.intensity = destructibleIntensity;
+                tailRenderer.material = destructibleMaterial;
             }
         }
     }
@@ -87,6 +95,7 @@ public class EnemyScript: MonoBehaviour
             destructible = false;
             asteroidLight.color = normalColor;
             asteroidLight.intensity = normalIntensity;
+            tailRenderer.material = normalMaterial;
         }
         
         if (transform.position.y != 2)

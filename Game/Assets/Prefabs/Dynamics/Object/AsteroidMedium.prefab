@@ -284,6 +284,9 @@ MonoBehaviour:
   collideParticle: {fileID: 1534790831634872, guid: e03aa621092adc046bc41c5de39d473c,
     type: 2}
   controller: GameUI(Sam)
+  normalMaterial: {fileID: 2100000, guid: 470e759212efc1e41b7ea67b4633d8d0, type: 2}
+  destructibleMaterial: {fileID: 2100000, guid: c2c68666c80d8604d893d0b8876d0181,
+    type: 2}
   lives: 100
 --- !u!114 &114884195471982390
 MonoBehaviour:
