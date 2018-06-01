@@ -14,6 +14,8 @@ public class EnemyScript: MonoBehaviour
     private bool destructible = false;
     public Color normalColor;
     public Color destructibleColor;
+    public float normalIntensity = 10f;
+    public float destructibleIntensity = 10f;
     private Light asteroidLight;
     
     public string spawner;
@@ -46,6 +48,7 @@ public class EnemyScript: MonoBehaviour
 
         asteroidLight = this.gameObject.GetComponentInChildren<Light>();
         asteroidLight.color = normalColor;
+        asteroidLight.intensity = normalIntensity;
     }
 
     public bool Destructible
@@ -63,6 +66,7 @@ public class EnemyScript: MonoBehaviour
             {
                 destructiblePeriod = 0f;
                 asteroidLight.color = destructibleColor;
+                asteroidLight.intensity = destructibleIntensity;
             }
         }
     }
@@ -82,6 +86,7 @@ public class EnemyScript: MonoBehaviour
         {
             destructible = false;
             asteroidLight.color = normalColor;
+            asteroidLight.intensity = normalIntensity;
         }
         
         if (transform.position.y != 2)

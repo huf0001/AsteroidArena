@@ -71,8 +71,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1999781903698104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.228723, y: 0.29, z: -5.8686}
-  m_LocalScale: {x: 5.0839577, y: 0.732733, z: 5.083958}
+  m_LocalPosition: {x: -9.915412, y: -0.49943, z: -0.24345939}
+  m_LocalScale: {x: 5, y: 0.4, z: 5}
   m_Children:
   - {fileID: 4053800383823776}
   m_Father: {fileID: 0}
@@ -126,7 +126,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1999781903698104}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -273,6 +273,8 @@ MonoBehaviour:
   destructibleTimeLimit: 3
   normalColor: {r: 1, g: 0, b: 0, a: 1}
   destructibleColor: {r: 0.7254902, g: 0, b: 1, a: 1}
+  normalIntensity: 20
+  destructibleIntensity: 10
   spawner: SpawnPoint
   headDirection: {fileID: 0}
   shootForce: 30
