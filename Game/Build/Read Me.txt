@@ -10,7 +10,7 @@ Instructions:
 	 - 	If a large or medium asteroid dies, it will split into two asteroids of the size immediately below 
 		it (small asteroids will just die).
 
-	If you manipulate asteroids to collide and kill each other, you will progress by 1%. This is your progress
+	If you manipulate asteroids to collide and kill each other, your progress will increase. This is your progress
 	towards being promoted from "asteroid" to "planet". Reach 100% to win and become a planet. Do it the
 	fastest, and you will jump to the top of the scoreboard. 
 		If you get hit by an asteroid, you will lose a life and gain a few seconds of immunity. Lose all
