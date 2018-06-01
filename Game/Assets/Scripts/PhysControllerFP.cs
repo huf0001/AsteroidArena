@@ -14,9 +14,6 @@ public class PhysControllerFP : MonoBehaviour
     public Color normalColor;
     public Color immuneColor;
 
-    public AudioClip collisionSound;
-    private AudioSource collisionSource;
-
     private Rigidbody move;
 	private Vector3 movInputs;
 	public Vector3 movePos;
@@ -36,25 +33,23 @@ public class PhysControllerFP : MonoBehaviour
 	public bool keyboardOnly = false;
 	public float keyboardSensitivity = 3f;
 
-	// Use this for initialization - dont drink cheap gin and code
-	void Awake () 
+    public Material normalMaterial;
+    public Material gravOnMaterial;
+    public Material hitMaterial;
+    private MeshRenderer mesh;
+
+    private ArenaAudioScript audioScript = null;
+
+    // Use this for initialization - dont drink cheap gin and code
+    void Awake () 
 	{
+        mesh = this.gameObject.GetComponentInChildren<MeshRenderer>();
+        mesh.material = normalMaterial;
+
+        audioScript = GameObject.Find(controller).GetComponent<ArenaAudioScript>();
         gameController = GameObject.Find(controller).GetComponent<GameplayController>();
         playerLight.color = normalColor;
 
-        collisionSource = this.gameObject.AddComponent<AudioSource>();
-        collisionSource.playOnAwake = false;
-        collisionSource.loop = false;
-
-        if (collisionSound == null)
-        {
-            //error message
-        }
-        else
-        {
-            collisionSource.clip = collisionSound;
-        }
-        
         Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 		move = this.GetComponents<Rigidbody>()[0];
@@ -178,6 +173,8 @@ public class PhysControllerFP : MonoBehaviour
         //UpdateRotation();
         
 		sinceLastGrounded += Time.deltaTime;
+
+        UpdateMesh();
 	}
 
     /*
@@ -240,7 +237,23 @@ public class PhysControllerFP : MonoBehaviour
             immune = true;
             playerLight.color = immuneColor;
 
-            collisionSource.Play();
+            audioScript.PlayCollisionSFX("hit");
+        }
+    }
+
+    void UpdateMesh()
+    {
+        if (immune)
+        {
+            mesh.material = hitMaterial;
+        }
+        else if ((Input.GetKey(KeyCode.Space)) || (Input.GetAxis("Fire1") > 0.1f))
+        {
+            mesh.material = gravOnMaterial;
+        }
+        else
+        {
+            mesh.material = normalMaterial;
         }
     }
 }

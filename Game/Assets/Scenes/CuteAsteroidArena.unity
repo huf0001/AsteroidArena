@@ -2638,6 +2638,23 @@ Prefab:
       propertyPath: collisionSound
       value: 
       objectReference: {fileID: 8300000, guid: b11756b6bd3b5c647a1fe8c771e5217f, type: 3}
+    - target: {fileID: 23672890132310374, guid: 7e0fee3e5cb155144b5733caa7f23ddd,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e73483d65f315914f9eb634f951c58dc, type: 2}
+    - target: {fileID: 11400000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: normalMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: e73483d65f315914f9eb634f951c58dc, type: 2}
+    - target: {fileID: 11400000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: gravOnMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 3222c860174b2e54980335200f5a4c56, type: 2}
+    - target: {fileID: 11400000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: hitMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a780774a46d219418025616efd13088, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
   m_IsPrefabParent: 0
