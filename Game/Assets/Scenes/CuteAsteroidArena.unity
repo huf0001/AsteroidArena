@@ -1013,7 +1013,7 @@ MonoBehaviour:
   spawner: {fileID: 382806635}
   shootForce: 30
   timerLimit: 2
-  asteroidLimit: 10
+  asteroidLimit: 5
   shootSound: {fileID: 0}
   asteroidParticle: {fileID: 0}
 --- !u!1 &408685143
@@ -2655,6 +2655,72 @@ Prefab:
       propertyPath: hitMaterial
       value: 
       objectReference: {fileID: 2100000, guid: 9a780774a46d219418025616efd13088, type: 2}
+    - target: {fileID: 400004, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 10800000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: m_Range
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 10800000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: m_Intensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: normalColor.g
+      value: 0.7647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: normalColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: normalColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 10800000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: m_Color.g
+      value: 0.7647059
+      objectReference: {fileID: 0}
+    - target: {fileID: 10800000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 10800000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: normalIntensity
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: immuneIntensity
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406214367667694, guid: 7e0fee3e5cb155144b5733caa7f23ddd,
+        type: 2}
+      propertyPath: gravity
+      value: -2000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114406214367667694, guid: 7e0fee3e5cb155144b5733caa7f23ddd,
+        type: 2}
+      propertyPath: DropOff
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
+      propertyPath: moveSpeed
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e0fee3e5cb155144b5733caa7f23ddd, type: 2}
   m_IsPrefabParent: 0
@@ -3814,6 +3880,11 @@ Prefab:
       propertyPath: progressText
       value: 
       objectReference: {fileID: 1878620417}
+    - target: {fileID: 114648574846290794, guid: d2c6b4384017d194f900a98e396f54cb,
+        type: 2}
+      propertyPath: maxLives
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d2c6b4384017d194f900a98e396f54cb, type: 2}
   m_IsPrefabParent: 0

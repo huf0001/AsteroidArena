@@ -68,7 +68,7 @@ public class FauxGravityAttractor : MonoBehaviour
 
         Rigidbody rb = body.GetComponent<Rigidbody>();
         float dist = Vector3.Distance(transform.position, body.position);
-        rb.AddForce((gravityUp * gravity) / ((Mathf.Pow(dist, 2) / DropOff)));
+        rb.AddForce((gravityUp * gravity) / ((Mathf.Pow(dist / DropOff, 2))));
 
         if (dist < destDistanceLimit)
         {

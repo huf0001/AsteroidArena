@@ -13,6 +13,8 @@ public class PhysControllerFP : MonoBehaviour
     public Light playerLight;
     public Color normalColor;
     public Color immuneColor;
+    public float normalIntensity;
+    public float immuneIntensity;
 
     private Rigidbody move;
 	private Vector3 movInputs;
@@ -95,6 +97,7 @@ public class PhysControllerFP : MonoBehaviour
             {
                 immune = false;
                 playerLight.color = normalColor;
+                playerLight.intensity = normalIntensity;
             }
         }
 
@@ -236,6 +239,7 @@ public class PhysControllerFP : MonoBehaviour
 
             immune = true;
             playerLight.color = immuneColor;
+            playerLight.intensity = immuneIntensity;
 
             audioScript.PlayCollisionSFX("hit");
         }
