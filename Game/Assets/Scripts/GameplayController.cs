@@ -53,7 +53,10 @@ public class GameplayController : MonoBehaviour
 	{
         if (firstCollisionInPair)
         {
+
+           
             progress = progress + 8;
+
             progressText.text = progressOutput + progress + "%";
             firstCollisionInPair = false;
         }
