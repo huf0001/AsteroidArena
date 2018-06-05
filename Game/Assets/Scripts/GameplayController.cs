@@ -41,6 +41,11 @@ public class GameplayController : MonoBehaviour
         {
             GameOver(gameOverScene);
         }
+        else if (progress >= 100)
+        {
+            progress = 100;
+            GameOver(gameOverScene);
+        }
 	}
 
     private void UpdateTime()
